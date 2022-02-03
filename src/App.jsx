@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './Header.jsx';
 import ActivityFeedList from './components/ActivityFeedList.jsx';
-import Test from './components/ActivityFeedListItem.jsx';
+
 
 const App = () => {
   return (
