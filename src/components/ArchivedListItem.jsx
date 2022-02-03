@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const AllCallsListItem = (props) => {
   const timestamp = new Date(props.created);
@@ -12,7 +11,6 @@ const AllCallsListItem = (props) => {
   
   const convertToAMPM = (hours, minutes) => {
     const amPm = hours >= 12 ? 'pm' : 'am';
-   
     hours = hours ? hours : 12; 
     hours = hours < 10 ? '0' + hours : hours + '';
     minutes = minutes < 10 ? '0' + minutes : minutes + '';
@@ -33,7 +31,7 @@ const AllCallsListItem = (props) => {
         <span>{time.hours + " " + time.minutes}</span>
         <span>{time.amPm}</span>
       </div>
-      <div><Link to={`/calls/${props.id}`}>Details</Link></div>
+      <div><button>Details</button></div>
     </div>
   );
 };
