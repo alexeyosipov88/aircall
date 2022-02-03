@@ -1,6 +1,6 @@
 import React from "react";
 
-const ActivityFeedListItem = (props) => {
+const AllCallsListItem = (props) => {
   const timestamp = new Date(props.created);
   const dateOptions = { year: "numeric", month: "long", day: "numeric" };
   const date = timestamp.toLocaleDateString("en-CA", dateOptions);
@@ -35,4 +35,4 @@ const ActivityFeedListItem = (props) => {
   );
 };
 
-export default ActivityFeedListItem;
+export default AllCallsListItem;

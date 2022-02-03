@@ -1,9 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import ActivityFeedListItem from "/home/alexey/lighthouse/aircall/src/components/ActivityFeedListItem.jsx";
+import AllCallsListItem from "/home/alexey/lighthouse/aircall/src/components/AllCallsListItem.jsx";
 
-
-const ActivityFeedList = () => {
+const AllCallsList = () => {
   const [calls, setCalls] = useState([]);
 
   useEffect(() => {
@@ -22,10 +21,10 @@ const ActivityFeedList = () => {
       via: elem.via,
       created: elem.created_at,
     };
-    return <ActivityFeedListItem key={elem.id} {...props} />;
+    return <AllCallsListItem key={elem.id} {...props} />;
   });
 
   return <div>{allCalls}</div>;
 };
 
-export default ActivityFeedList;
+export default AllCallsList;
