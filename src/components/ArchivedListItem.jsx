@@ -32,6 +32,8 @@ const AllCallsListItem = (props) => {
         <span>{time.amPm}</span>
       </div>
       <div><button>Details</button></div>
+      <div>
+</div>
     </div>
   );
 };

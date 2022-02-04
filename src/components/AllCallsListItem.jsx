@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 
 const AllCallsListItem = (props) => {
+  const [clicked, setClicked] = useState(false)
   const timestamp = new Date(props.created);
   const dateOptions = { year: "numeric", month: "long", day: "numeric" };
   const date = timestamp.toLocaleDateString("en-CA", dateOptions);
@@ -20,8 +24,25 @@ const AllCallsListItem = (props) => {
     return result;
   }
 
+  useEffect(() => {
+    const JSON = { is_archived: true };
+
+    if(clicked) {
+      axios.post(`https://aircall-job.herokuapp.com/activities/${props.id}`, JSON);
+      
+    }
+    return () => setClicked(false);
+
+  }, [clicked])
   
   const time = convertToAMPM(hours, minutes);
+
+  const archiveCall = () => {
+    setClicked(true);
+
+
+  }
+
   
   return (
     <div>
@@ -34,6 +55,7 @@ const AllCallsListItem = (props) => {
         <span>{time.amPm}</span>
       </div>
       <div><Link to={`/calls/${props.id}`}>Details</Link></div>
+      <div><button onClick={archiveCall}>Archive</button></div>
     </div>
   );
 };

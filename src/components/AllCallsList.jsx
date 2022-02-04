@@ -4,12 +4,17 @@ import AllCallsListItem from "/home/alexey/lighthouse/aircall/src/components/All
 
 const AllCallsList = () => {
   const [calls, setCalls] = useState([]);
+  const [test, setTest] = useState(false);
 
   useEffect(() => {
     axios.get("https://aircall-job.herokuapp.com/activities").then((result) => {
       setCalls(result.data);
     });
-  }, []);
+    if(test) {
+      console.log(`effect`)
+    }
+    return () => {setTest(false)}
+  }, [test]);
 
   // sort calls by timestamp
 
@@ -22,7 +27,7 @@ const AllCallsList = () => {
       via: elem.via,
       created: elem.created_at,
     };
-    return <AllCallsListItem key={elem.id} {...props} />;
+    return <AllCallsListItem test={setTest} key={elem.id} {...props} />;
   });
 
   return <div>{allCalls}</div>;

@@ -13,11 +13,8 @@ const Details = () => {
     });
   }, []);
 
-  console.log(details);
 
   // sort calls by timestamp
-
-  
 
   return <div>{}</div>;
 };
