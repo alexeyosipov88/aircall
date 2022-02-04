@@ -5,7 +5,7 @@ import AllCallsListItem from "/home/alexey/lighthouse/aircall/src/components/All
 const AllCallsList = () => {
   const [calls, setCalls] = useState([]);
   // listen for archive clicks on children
-  const [archived, setArchived] = useState(false);
+  // const [archived, setArchived] = useState(false);
   const [allClicked, setAllClicked] = useState(false);
   const [updatePage, setUpdatePage] = useState(false);
 
@@ -21,11 +21,9 @@ const AllCallsList = () => {
       getAllCalls();
     }
     
-    console.log(allClicked)
     if (allClicked) {
-      console.log('promise')
       const archiveAllPromises = () => {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
           const promises = [];
           calls.forEach((elem) => {
             const JSON = { is_archived: true };
@@ -47,11 +45,11 @@ const AllCallsList = () => {
     }
 
     return () => {
-      setArchived(false);
+      // setArchived(false);
       setAllClicked(false);
       setUpdatePage(false);
     };
-  }, [archived, allClicked, updatePage]);
+  }, [allClicked, updatePage]);
 
   // sort calls by timestamp
 
@@ -66,7 +64,7 @@ const AllCallsList = () => {
       created: elem.created_at,
     };
     return (
-      <AllCallsListItem setArchived={setArchived} key={elem.id} {...props} />
+      <AllCallsListItem setUpdatePage={setUpdatePage} key={elem.id} {...props} />
     );
   });
   const archiveAll = () => {

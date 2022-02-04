@@ -4,7 +4,7 @@ import ArichivedListItem from "/home/alexey/lighthouse/aircall/src/components/Al
 
 const ArchivedList = () => {
   const [calls, setCalls] = useState([]);
-  const [archived, setArchived] = useState(false);
+  const [updatePage, setUpdatePage] = useState(false);
   const [allClicked, setAllClicked] = useState(false);
 
   useEffect(() => {
@@ -24,10 +24,10 @@ const ArchivedList = () => {
       );
     }
     return () => {
-      setArchived(false);
+      setUpdatePage(false);
       setAllClicked(false);
     };
-  }, [allClicked, archived]);
+  }, [allClicked, updatePage]);
 
   // sort calls by timestamp
 
@@ -43,7 +43,7 @@ const ArchivedList = () => {
       created: elem.created_at,
     };
     return (
-      <ArichivedListItem setArchived={setArchived} key={elem.id} {...props} />
+      <ArichivedListItem setUpdatePage={setUpdatePage} key={elem.id} {...props} />
     );
   });
 

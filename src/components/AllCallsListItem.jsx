@@ -30,7 +30,7 @@ const AllCallsListItem = (props) => {
       axios.post(`https://aircall-job.herokuapp.com/activities/${props.id}`, JSON)
       .then(response => {
         console.log(response);
-        props.setArchived(true);
+        props.setUpdatePage(true);
       }, error => {
         console.log(error)
       })
