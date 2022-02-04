@@ -38,16 +38,27 @@
     }
 
     .nodate-call {
+      // box-shadow: 0 5px 10px $grayishBlue;
+      // background-color: white;
+      
+
       width: 350px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       padding: 20px 0;
-      border: solid;
+      border: 1px solid rgba(207, 201, 201, 0.733);
       border-radius: 10px;
+      img {
+        width: 100%;
+      }
+      .icon {
+        width: 25px;
+      }
       .number {
         font-weight: 900;
       }
+
     }
 
     .date {

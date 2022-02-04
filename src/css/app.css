@@ -42,8 +42,14 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 20px 0;
-  border: solid;
+  border: 1px solid rgba(207, 201, 201, 0.733);
   border-radius: 10px;
+}
+.all-calls .call .nodate-call img {
+  width: 100%;
+}
+.all-calls .call .nodate-call .icon {
+  width: 25px;
 }
 .all-calls .call .nodate-call .number {
   font-weight: 900;

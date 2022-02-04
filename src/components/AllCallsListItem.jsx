@@ -46,14 +46,15 @@ const AllCallsListItem = (props) => {
   const archiveCall = () => {
     setClicked(true);
   };
-  console.log(props.icon)
   const dateClass = props.sameDate ? "same-date" : "date";
   const archUnarchButton = props.is_archived ? "Unarchive" : "Archive";
   return (
     <div className="call">
       <div className={dateClass}>{date}</div>
       <div className="nodate-call">
-        <div><img src={props.icon} alt="" /></div>
+        <div className="icon">
+          <img src={props.icon} alt="" />
+        </div>
         <div>
           <div className="number">{props.from}</div>
           <div>on {props.via}</div>
@@ -62,14 +63,17 @@ const AllCallsListItem = (props) => {
           <span>{time.hours + ":" + time.minutes}</span>
           <span>{" " + time.amPm}</span>
         </div>
-      </div>
-        {
-          <div>
-            <Link to={`/calls/${props.id}`}>Details</Link>
-          </div>
-        }
+
       <div>
-        <button onClick={archiveCall}>{archUnarchButton}</button>
+        <div>
+          <Link to={`/calls/${props.id}`}>Details</Link>
+        </div>
+
+        <div>
+          <button onClick={archiveCall}>{archUnarchButton}</button>
+        </div>
+      </div>
+        
       </div>
     </div>
   );
