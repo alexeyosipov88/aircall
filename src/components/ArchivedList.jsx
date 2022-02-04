@@ -4,9 +4,8 @@ import ArichivedListItem from "/home/alexey/lighthouse/aircall/src/components/Al
 
 const ArchivedList = () => {
   const [calls, setCalls] = useState([]);
-  const [clicked, setClicked] = useState(false);
   const [archived, setArchived] = useState(false);
-
+  const [allClicked, setAllClicked] = useState(false);
 
   useEffect(() => {
     axios.get("https://aircall-job.herokuapp.com/activities")
@@ -15,8 +14,7 @@ const ArchivedList = () => {
           const archivedCalls = result.data.filter((elem) => elem.is_archived);
           setCalls(archivedCalls);
         });
-    if (clicked) {
-      console.log('hello')
+    if (allClicked) {
       axios.get(`https://aircall-job.herokuapp.com/reset`).then(
         () => {
           // getArchivedCalls();
@@ -28,9 +26,9 @@ const ArchivedList = () => {
     }
     return () => {
       setArchived(false);
-      setClicked(false);
+      setAllClicked(false);
     }
-  }, [clicked, archived]);
+  }, [allClicked, archived]);
 
   // sort calls by timestamp
 
@@ -49,8 +47,7 @@ const ArchivedList = () => {
   });
 
   const unarchiveAll = () => {
-    console.log('wht')
-    setClicked(true);
+    setAllClicked(true);
   };
 
   return (
