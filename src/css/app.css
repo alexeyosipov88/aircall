@@ -13,13 +13,32 @@
   width: 376px;
   height: 666px;
   z-index: 100;
-
   background: white;
   border-radius: 3px;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, .9);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.9);
 }
 
 #app .container-view {
   padding: 20px;
 }
 
+.all-calls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.all-calls .call {
+  border: solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
+.all-calls .call .same-date {
+  display: none;
+}
+.all-calls .call .date {
+  margin-bottom: 30px;
+}
+
+/*# sourceMappingURL=app.css.map */

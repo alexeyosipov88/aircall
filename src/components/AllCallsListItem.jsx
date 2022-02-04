@@ -11,7 +11,6 @@ const AllCallsListItem = (props) => {
   const date = timestamp.toLocaleDateString("en-CA", dateOptions);
   let hours = timestamp.getHours();
   let minutes = timestamp.getMinutes();
-
   // convert time to am / pm format
   
   const convertToAMPM = (hours, minutes) => {
@@ -26,7 +25,6 @@ const AllCallsListItem = (props) => {
   useEffect(() => {
     const JSON = props.is_archived ? { is_archived: false } : { is_archived: true };
     if(clicked) {
-      console.log('clicked')
       axios.post(`https://aircall-job.herokuapp.com/activities/${props.id}`, JSON)
       .then(response => {
         console.log(response);
@@ -45,10 +43,12 @@ const AllCallsListItem = (props) => {
     setClicked(true);
   }
 
+  const dateClass = props.sameDate ? "same-date" : "date";
+
   const archUnarchButton = props.is_archived ? "Unarchive" : "Archive";
   return (
-    <div>
-      <div>{date}</div>
+    <div className="call">
+      <div className={dateClass}>{date}</div>
       <div>{props.from}</div>
       <div>{props.via}</div>
       <div>

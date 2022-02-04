@@ -1,16 +1,18 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import ArichivedListItem from "/home/alexey/lighthouse/aircall/src/components/AllCallsListItem.jsx";
+import checkForSameDate from "../helpers/check-same-date";
+
 
 const ArchivedList = () => {
   const [calls, setCalls] = useState([]);
   const [updatePage, setUpdatePage] = useState(false);
   const [allClicked, setAllClicked] = useState(false);
-
   useEffect(() => {
     axios.get("https://aircall-job.herokuapp.com/activities").then((result) => {
       // filter all calls to only archived ones
       const archivedCalls = result.data.filter((elem) => elem.is_archived);
+      checkForSameDate(archivedCalls);
       setCalls(archivedCalls);
     });
     if (allClicked) {
@@ -36,6 +38,7 @@ const ArchivedList = () => {
 
   const allCalls = calls.map((elem) => {
     const props = {
+      sameDate: elem.sameDate,
       is_archived: true,
       id: elem.id,
       from: elem.from,
@@ -52,7 +55,7 @@ const ArchivedList = () => {
   };
 
   return (
-    <div>
+    <div className="all-calls">
       <div>
         <button onClick={unarchiveAll}>Unarchive all</button>
       </div>
