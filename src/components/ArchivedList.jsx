@@ -4,18 +4,33 @@ import ArichivedListItem from "/home/alexey/lighthouse/aircall/src/components/Al
 
 const ArchivedList = () => {
   const [calls, setCalls] = useState([]);
+  const [clicked, setClicked] = useState(false);
+  const [archived, setArchived] = useState(false);
 
- 
+
   useEffect(() => {
-    axios.get("https://aircall-job.herokuapp.com/activities").then((result) => {
-      // filter all calls to only archived ones
-      console.log(result.data);
-      const archivedCalls = result.data.filter((elem) => elem.is_archived);
-      setCalls(archivedCalls);
-    });
-
-    console.log(`EFFECT`);
-  }, []);
+    axios.get("https://aircall-job.herokuapp.com/activities")
+        .then((result) => {
+          // filter all calls to only archived ones
+          const archivedCalls = result.data.filter((elem) => elem.is_archived);
+          setCalls(archivedCalls);
+        });
+    if (clicked) {
+      console.log('hello')
+      axios.get(`https://aircall-job.herokuapp.com/reset`).then(
+        () => {
+          // getArchivedCalls();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+    return () => {
+      setArchived(false);
+      setClicked(false);
+    }
+  }, [clicked, archived]);
 
   // sort calls by timestamp
 
@@ -24,14 +39,26 @@ const ArchivedList = () => {
 
   const allCalls = calls.map((elem) => {
     const props = {
+      is_archived: true,
+      id: elem.id,
       from: elem.from,
       via: elem.via,
       created: elem.created_at,
     };
-    return <ArichivedListItem key={elem.id} {...props} />;
+    return <ArichivedListItem setArchived={setArchived} key={elem.id} {...props} />;
   });
 
-  return <div>{allCalls}</div>;
+  const unarchiveAll = () => {
+    console.log('wht')
+    setClicked(true);
+  };
+
+  return (
+    <div>
+      <div>{allCalls}</div>
+      <button onClick={unarchiveAll}>Unarchive all</button>
+    </div>
+  );
 };
 
 export default ArchivedList;

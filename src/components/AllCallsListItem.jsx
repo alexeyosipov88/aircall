@@ -16,7 +16,6 @@ const AllCallsListItem = (props) => {
   
   const convertToAMPM = (hours, minutes) => {
     const amPm = hours >= 12 ? 'pm' : 'am';
-   
     hours = hours ? hours : 12; 
     hours = hours < 10 ? '0' + hours : hours + '';
     minutes = minutes < 10 ? '0' + minutes : minutes + '';
@@ -25,25 +24,28 @@ const AllCallsListItem = (props) => {
   }
 
   useEffect(() => {
-    const JSON = { is_archived: true };
-
+    const JSON = props.is_archived ? { is_archived: false } : { is_archived: true };
     if(clicked) {
-      axios.post(`https://aircall-job.herokuapp.com/activities/${props.id}`, JSON);
-      
+      console.log('clicked')
+      axios.post(`https://aircall-job.herokuapp.com/activities/${props.id}`, JSON)
+      .then(response => {
+        console.log(response);
+        props.setArchived(true);
+      }, error => {
+        console.log(error)
+      })
+
     }
     return () => setClicked(false);
-
   }, [clicked])
   
   const time = convertToAMPM(hours, minutes);
 
   const archiveCall = () => {
     setClicked(true);
-
-
   }
 
-  
+  const archUnarchButton = props.is_archived ? "Unarchive" : "Archive";
   return (
     <div>
       <div>{date}</div>
@@ -54,8 +56,8 @@ const AllCallsListItem = (props) => {
         <span>{time.hours + " " + time.minutes}</span>
         <span>{time.amPm}</span>
       </div>
-      <div><Link to={`/calls/${props.id}`}>Details</Link></div>
-      <div><button onClick={archiveCall}>Archive</button></div>
+      {<div><Link to={`/calls/${props.id}`}>Details</Link></div>}
+      <div><button onClick={archiveCall}>{archUnarchButton}</button></div>
     </div>
   );
 };
