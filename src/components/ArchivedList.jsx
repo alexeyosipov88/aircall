@@ -8,12 +8,11 @@ const ArchivedList = () => {
   const [allClicked, setAllClicked] = useState(false);
 
   useEffect(() => {
-    axios.get("https://aircall-job.herokuapp.com/activities")
-        .then((result) => {
-          // filter all calls to only archived ones
-          const archivedCalls = result.data.filter((elem) => elem.is_archived);
-          setCalls(archivedCalls);
-        });
+    axios.get("https://aircall-job.herokuapp.com/activities").then((result) => {
+      // filter all calls to only archived ones
+      const archivedCalls = result.data.filter((elem) => elem.is_archived);
+      setCalls(archivedCalls);
+    });
     if (allClicked) {
       axios.get(`https://aircall-job.herokuapp.com/reset`).then(
         () => {
@@ -27,7 +26,7 @@ const ArchivedList = () => {
     return () => {
       setArchived(false);
       setAllClicked(false);
-    }
+    };
   }, [allClicked, archived]);
 
   // sort calls by timestamp
@@ -43,7 +42,9 @@ const ArchivedList = () => {
       via: elem.via,
       created: elem.created_at,
     };
-    return <ArichivedListItem setArchived={setArchived} key={elem.id} {...props} />;
+    return (
+      <ArichivedListItem setArchived={setArchived} key={elem.id} {...props} />
+    );
   });
 
   const unarchiveAll = () => {
@@ -52,8 +53,10 @@ const ArchivedList = () => {
 
   return (
     <div>
+      <div>
+        <button onClick={unarchiveAll}>Unarchive all</button>
+      </div>
       <div>{allCalls}</div>
-      <button onClick={unarchiveAll}>Unarchive all</button>
     </div>
   );
 };

@@ -51,7 +51,6 @@ const AllCallsListItem = (props) => {
       <div>{date}</div>
       <div>{props.from}</div>
       <div>{props.via}</div>
-      <div>icon</div>
       <div>
         <span>{time.hours + " " + time.minutes}</span>
         <span>{time.amPm}</span>

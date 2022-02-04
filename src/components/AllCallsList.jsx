@@ -10,11 +10,17 @@ const AllCallsList = () => {
   const [updatePage, setUpdatePage] = useState(false);
 
   useEffect(() => {
-    axios.get("https://aircall-job.herokuapp.com/activities").then((result) => {
-      const notArchived = result.data.filter((elem) => !elem.is_archived);
-      console.log(notArchived.length)
-      setCalls(notArchived);
-    });
+    const getAllCalls = () => {
+      axios.get("https://aircall-job.herokuapp.com/activities").then((result) => {
+        const notArchived = result.data.filter((elem) => !elem.is_archived);
+        console.log(notArchived.length)
+        setCalls(notArchived);
+      });
+    }
+    if(!allClicked) {
+      getAllCalls();
+    }
+    
     console.log(allClicked)
     if (allClicked) {
       console.log('promise')
@@ -36,7 +42,7 @@ const AllCallsList = () => {
       };
 
       archiveAllPromises().then(() => {
-        setUpdatePage(true);
+        setUpdatePage(true); 
       });
     }
 
