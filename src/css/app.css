@@ -25,7 +25,6 @@
 .all-calls {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 .all-calls .call {
   border: solid;
@@ -36,6 +35,18 @@
 }
 .all-calls .call .same-date {
   display: none;
+}
+.all-calls .call .nodate-call {
+  width: 350px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 0;
+  border: solid;
+  border-radius: 10px;
+}
+.all-calls .call .nodate-call .number {
+  font-weight: 900;
 }
 .all-calls .call .date {
   margin-bottom: 30px;

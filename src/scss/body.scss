@@ -1,16 +1,21 @@
+$grayishBlue: #585e6ae5;
+
+
 html, body, h1, h2, h3, ul, li {
   margin: 0;
   padding: 0;
   border: 0;
   font: inherit;
   font-size: 100%;
+  box-sizing: border-box;
 }
-
 
 body {
   background: #233142;
-  font-family: helvetica, arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
-  color: #333333;
+  color: $grayishBlue;
+  font-weight: 500;
+
   line-height: 1;
 }

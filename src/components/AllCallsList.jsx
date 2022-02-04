@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import AllCallsListItem from "/home/alexey/lighthouse/aircall/src/components/AllCallsListItem.jsx";
 import checkForSameDate from "../helpers/check-same-date";
+import iconsObject from "../icons/icons-object";
+
+
 const AllCallsList = () => {
   const [calls, setCalls] = useState([]);
   // listen for archive clicks on children
@@ -106,7 +109,9 @@ const AllCallsList = () => {
   calls.sort((a, b) => a.created - b.created);
 
   const allCalls = calls.map((elem) => {
+    const icon = iconsObject[elem.call_type];
     const props = {
+      icon: icon,
       sameDate: elem.sameDate,
       is_archived: false,
       id: elem.id,
