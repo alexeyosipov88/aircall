@@ -7,6 +7,7 @@ import getDate from "../helpers/get-date";
 import getTime from "../helpers/get-time";
 
 const AllCallsListItem = (props) => {
+  
   const [clicked, setClicked] = useState(false);
   const date = getDate(props.created);
   const time = getTime(props.created);

@@ -22,9 +22,14 @@ const AllCallsList = () => {
           setCalls(notArchived);
         });
     };
+
+    // don't render page before all promises resolve 
     if (!allClicked && !updatePage) {
       getAllCalls();
     }
+
+
+    // why no api for archive all calls? :) this is a promise for iterative post requests
 
     if (allClicked) {
       const archiveAllPromises = () => {
@@ -44,7 +49,6 @@ const AllCallsList = () => {
         });
       };
       archiveAllPromises().then(() => {
-        console.log("START");
         setUpdatePage(true);
       });
     }

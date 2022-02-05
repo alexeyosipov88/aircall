@@ -4,6 +4,10 @@ header {
   padding: 20px 0;
   text-align: center;
 }
+.v-line{
+  border-left: 2px solid rgba(143, 137, 137, 0.192);
+  // height: 5;
+}
 
 header svg {
   display: block;
@@ -17,6 +21,7 @@ header svg {
 }
 
 .tablinks {
+  margin-top: 10px;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   color: #585e6ae5;

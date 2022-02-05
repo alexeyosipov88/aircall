@@ -55,7 +55,7 @@ const ArchivedList = () => {
     setAllClicked(true);
   };
   
-  const archBtn = iconsObject.archive;
+  const archBtn = iconsObject.unarchive;
 
   return (
     <div className="all-calls">

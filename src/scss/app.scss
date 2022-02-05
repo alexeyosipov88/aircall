@@ -41,7 +41,7 @@ img {
   padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border: 1px solid rgba(182, 160, 160, 0.733);
+  border: 1px solid rgba(224, 221, 221, 0.733);
   border-radius: 10px;
   margin-left: 10px;
   margin-right: 10px;
@@ -85,7 +85,9 @@ img {
     }
 
     .nodate-call:hover {
-      background-color: rgba(160, 150, 150, 0.199);
+      transition: 0.9s;
+
+      background-color: rgba(58, 55, 55, 0.199);
       .call-buttons {
         display: flex;
         justify-content: space-around;
@@ -99,9 +101,9 @@ img {
     .nodate-call {
       height: 20px;
       width: 350px;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       padding: 20px 0;
-      border: 1px solid rgba(182, 160, 160, 0.733);
+      border: 1px solid rgba(224, 221, 221, 0.733);
       border-radius: 10px;
       .call-info {
         display: flex;
@@ -121,12 +123,13 @@ img {
 
       .number {
         font-weight: 900;
+        padding-bottom: 5px;
       }
     }
 
     .date {
       margin-bottom: 7px;
-      margin-top: 7px;
+      margin-top: 3px;
     }
   }
 }

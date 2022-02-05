@@ -42,7 +42,7 @@ img {
   padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border: 1px solid rgba(182, 160, 160, 0.733);
+  border: 1px solid rgba(224, 221, 221, 0.733);
   border-radius: 10px;
   margin-left: 10px;
   margin-right: 10px;
@@ -86,7 +86,8 @@ img {
   display: none;
 }
 .all-calls .call .nodate-call:hover {
-  background-color: rgba(160, 150, 150, 0.199);
+  transition: 0.9s;
+  background-color: rgba(58, 55, 55, 0.199);
 }
 .all-calls .call .nodate-call:hover .call-buttons {
   display: flex;
@@ -99,9 +100,9 @@ img {
 .all-calls .call .nodate-call {
   height: 20px;
   width: 350px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   padding: 20px 0;
-  border: 1px solid rgba(182, 160, 160, 0.733);
+  border: 1px solid rgba(224, 221, 221, 0.733);
   border-radius: 10px;
 }
 .all-calls .call .nodate-call .call-info {
@@ -120,10 +121,11 @@ img {
 }
 .all-calls .call .nodate-call .number {
   font-weight: 900;
+  padding-bottom: 5px;
 }
 .all-calls .call .date {
   margin-bottom: 7px;
-  margin-top: 7px;
+  margin-top: 3px;
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -48,6 +48,7 @@ const Header = () => {
         <Link to="/calls">
           <button className="tablinks">All calls</button>
         </Link>
+        <span className="v-line"></span>
         <Link to="/archived">
           <button className="tablinks">Archived</button>
         </Link>
