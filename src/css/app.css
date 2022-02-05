@@ -86,7 +86,7 @@ img {
   display: none;
 }
 .all-calls .call .nodate-call:hover {
-  transition: 0.9s;
+  transition: 0.4s;
   background-color: rgba(58, 55, 55, 0.199);
 }
 .all-calls .call .nodate-call:hover .call-buttons {
