@@ -29,9 +29,8 @@ const AllCallsListItem = (props) => {
     if (clicked) {
       axios
         .post(`https://aircall-job.herokuapp.com/activities/${props.id}`, JSON)
-        .then(
-          (response) => {
-            console.log(response);
+        .then(() => {
+            console.log('update')
             props.setUpdatePage(true);
           },
           (error) => {

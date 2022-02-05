@@ -17,8 +17,8 @@ const ArchivedList = () => {
       setCalls(archivedCalls);
     });
     if (allClicked) {
-      axios.get(`https://aircall-job.herokuapp.com/reset`).then(
-        () => {
+      axios.get(`https://aircall-job.herokuapp.com/reset`).
+      then(() => {
           // getArchivedCalls();
         },
         (error) => {

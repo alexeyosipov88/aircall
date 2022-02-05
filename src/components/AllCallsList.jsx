@@ -18,11 +18,10 @@ const AllCallsList = () => {
           let notArchived = result.data.filter((elem) => !elem.is_archived);
           // let previousDateChecker;
           checkForSameDate(notArchived);
-
           setCalls(notArchived);
         });
     };
-    if (!allClicked) {
+    if (!allClicked && !updatePage) {
       getAllCalls();
     }
 
@@ -39,26 +38,28 @@ const AllCallsList = () => {
             promises.push(promise);
           });
           Promise.all(promises).then(() => {
-            resolve(true);
+            resolve();
           });
         });
       };
 
       archiveAllPromises().then(() => {
+        console.log('START')
         setUpdatePage(true);
       });
     }
-
     return () => {
       setAllClicked(false);
       setUpdatePage(false);
     };
-  }, [allClicked, updatePage]);
+  }, [updatePage, allClicked]);
 
   // sort calls by timestamp
 
   const archBtn = iconsObject.archive;
   calls.sort((a, b) => a.created - b.created);
+
+  // const updAftClick = () => {
 
   const allCalls = calls.map((elem) => {
     const icon = iconsObject[elem.call_type];
@@ -86,7 +87,9 @@ const AllCallsList = () => {
   return (
     <div className="all-calls">
       <div className="archive-all" onClick={archiveAll}>
-        <div className="icon"><img src={archBtn} alt="" /></div>
+        <div className="icon">
+          <img src={archBtn} alt="" />
+        </div>
         <div className="arch-all-text">Archive all calls</div>
       </div>
       <div>{allCalls}</div>
