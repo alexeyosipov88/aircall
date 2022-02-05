@@ -58,6 +58,7 @@ img {
 .all-calls {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 .all-calls .call {
   position: relative;

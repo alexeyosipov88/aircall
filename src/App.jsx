@@ -17,7 +17,6 @@ const App = () => {
         <Route path="/archived" element={<ArchivedList />} />
         <Route path="/" element={<AllCallsList />} />
         </Routes>
-        <div className="container-view">Some activities should be here</div>
      </BrowserRouter>
     </div>
   );

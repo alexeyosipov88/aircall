@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header>
+      <div>
+
+        
+      </div>
       <svg
         width="486px"
         height="168px"
@@ -42,19 +46,13 @@ const Header = () => {
         </g>
       </svg>
       <div className="tab">
-        {/* <button className="tablinks" onClick="openCity(event, 'London')">
-          London
-        </button>
-        <button className="tablinks" onClick="openCity(event, 'Paris')">
-          Paris
-        </button>
-        <button className="tablinks" onClick="openCity(event, 'Tokyo')">
-          Tokyo
-        </button> */}
+        <Link to="/calls">
+          <button className="tablinks">All calls</button>
+        </Link>
+        <Link to="/archived">
+          <button className="tablinks">Archived</button>
+        </Link>
       </div>
-
-      <Link to="/calls">All calls</Link>
-      <Link to="/archived">Archived</Link>
     </header>
   );
 };
