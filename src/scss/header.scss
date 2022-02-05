@@ -21,7 +21,7 @@ header svg {
   font-size: 16px;
   color: #585e6ae5;
   font-weight: 900;
-
+  border-radius: 10px;
 
 }
 
@@ -35,14 +35,10 @@ header svg {
 }
 
 .tab button:hover {
-
   background-color: #ddd;
 }
 
-
-
 .tab button.active {
-
   background-color: #ccc;
   
 }

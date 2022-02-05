@@ -48,6 +48,22 @@ img {
   margin-right: 10px;
 }
 
+.details {
+  width: 300px;
+  text-align: justify;
+  font-size: 14px;
+  margin-top: 110px;
+  padding-left: 40px;
+}
+.details div {
+  margin-bottom: 20px;
+}
+.details h3 {
+  font-size: 23px;
+  margin-bottom: 30px;
+  font-weight: 900;
+}
+
 .arch-all-text {
   padding-top: 5px;
   padding-left: 30px;
@@ -95,6 +111,12 @@ img {
 }
 .all-calls .call .nodate-call .call-buttons {
   display: none;
+}
+.all-calls .call .nodate-call .time {
+  padding-right: 10px;
+}
+.all-calls .call .nodate-call .from-and-via {
+  padding-right: 80px;
 }
 .all-calls .call .nodate-call .number {
   font-weight: 900;

@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import AllCallsListItem from "/home/alexey/lighthouse/aircall/src/components/AllCallsListItem.jsx";
+// import AllCallsListItem from "/home/alexey/lighthouse/aircall/src/components/AllCallsListItem.jsx";
+import AllCallsListItem from "../components/AllCallsListItem.jsx";
+
 import checkForSameDate from "../helpers/check-same-date";
 import iconsObject from "../icons/icons-object";
 
 const AllCallsList = () => {
   const [calls, setCalls] = useState([]);
-
   const [allClicked, setAllClicked] = useState(false);
   const [updatePage, setUpdatePage] = useState(false);
 
@@ -16,8 +17,8 @@ const AllCallsList = () => {
         .get("https://aircall-job.herokuapp.com/activities")
         .then((result) => {
           let notArchived = result.data.filter((elem) => !elem.is_archived);
-          // let previousDateChecker;
           checkForSameDate(notArchived);
+          notArchived.sort((a, b) => a.created - b.created);
           setCalls(notArchived);
         });
     };
@@ -42,9 +43,8 @@ const AllCallsList = () => {
           });
         });
       };
-
       archiveAllPromises().then(() => {
-        console.log('START')
+        console.log("START");
         setUpdatePage(true);
       });
     }
@@ -54,12 +54,7 @@ const AllCallsList = () => {
     };
   }, [updatePage, allClicked]);
 
-  // sort calls by timestamp
-
   const archBtn = iconsObject.archive;
-  calls.sort((a, b) => a.created - b.created);
-
-  // const updAftClick = () => {
 
   const allCalls = calls.map((elem) => {
     const icon = iconsObject[elem.call_type];

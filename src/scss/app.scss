@@ -13,7 +13,6 @@
   width: 376px;
   height: 666px;
   z-index: 100;
-
   background: white;
   border-radius: 3px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.9);
@@ -34,7 +33,6 @@ img {
 
 .archive-all {
   cursor: pointer;
-
   display: flex;
   margin-bottom: 10px;
   margin-top: 30px;
@@ -49,6 +47,23 @@ img {
   margin-right: 10px;
 }
 
+.details {
+  width: 300px;
+  text-align: justify;
+  font-size: 14px;
+  margin-top: 110px;
+  padding-left: 40px;
+  div {
+    margin-bottom: 20px;
+  }
+  h3 {
+    font-size: 23px;
+    margin-bottom: 30px;
+    font-weight: 900;
+  }
+}
+
+
 .arch-all-text {
   padding-top: 5px;
   padding-left: 30px;
@@ -62,11 +77,9 @@ img {
   margin-top: 20px;
   .call {
     position: relative;
-    // border: solid;
     display: flex;
     flex-direction: column;
     align-items: center;
-    // padding: 30px;
     .same-date {
       display: none;
     }
@@ -99,6 +112,13 @@ img {
         display: none;
       }
 
+      .time {
+        padding-right: 10px;
+      }
+      .from-and-via {
+        padding-right: 80px;
+      }
+
       .number {
         font-weight: 900;
       }
@@ -107,7 +127,6 @@ img {
     .date {
       margin-bottom: 7px;
       margin-top: 7px;
-      // background-color: red;
     }
   }
 }

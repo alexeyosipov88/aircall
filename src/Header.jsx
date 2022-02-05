@@ -4,10 +4,8 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header>
-      <div>
-
-        
-      </div>
+      <Link to="/">
+      
       <svg
         width="486px"
         height="168px"
@@ -45,6 +43,7 @@ const Header = () => {
           />
         </g>
       </svg>
+      </Link>
       <div className="tab">
         <Link to="/calls">
           <button className="tablinks">All calls</button>

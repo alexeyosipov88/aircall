@@ -4,7 +4,8 @@ import Header from "./Header.jsx";
 import AllCallsList from "./components/AllCallsList.jsx";
 import ArchivedList from "./components/ArchivedList.jsx";
 import Details from "./components/Details.jsx";
-import { BrowserRouter, Routes, Route, Havigate } from "react-router-dom";
+import Home from "./components/Home.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
         <Route path="/calls/:id" element={<Details />} />
         <Route path="/calls" element={<AllCallsList />} />
         <Route path="/archived" element={<ArchivedList />} />
-        <Route path="/" element={<AllCallsList />} />
+        <Route path="/" element={<Home />} />
         </Routes>
      </BrowserRouter>
     </div>
