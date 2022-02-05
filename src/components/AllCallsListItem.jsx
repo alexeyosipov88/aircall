@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import iconsObject from "../icons/icons-object";
 
 const AllCallsListItem = (props) => {
   const [clicked, setClicked] = useState(false);
@@ -46,34 +47,43 @@ const AllCallsListItem = (props) => {
   const archiveCall = () => {
     setClicked(true);
   };
+
+  const archBtn = props.is_archived
+    ? iconsObject.unarchive
+    : iconsObject.archive;
+
+  const infoBtn = iconsObject.info;
+
   const dateClass = props.sameDate ? "same-date" : "date";
   const archUnarchButton = props.is_archived ? "Unarchive" : "Archive";
   return (
     <div className="call">
       <div className={dateClass}>{date}</div>
       <div className="nodate-call">
-        <div className="icon">
-          <img src={props.icon} alt="" />
-        </div>
-        <div>
-          <div className="number">{props.from}</div>
-          <div>on {props.via}</div>
-        </div>
-        <div>
-          <span>{time.hours + ":" + time.minutes}</span>
-          <span>{" " + time.amPm}</span>
-        </div>
-
-      <div>
-        <div>
-          <Link to={`/calls/${props.id}`}>Details</Link>
+        <div className="call-info">
+          <div className="icon">
+            <img src={props.icon} alt="" />
+          </div>
+          <div>
+            <div className="number">{props.from}</div>
+            <div>on {props.via}</div>
+          </div>
+          <div>
+            <span>{time.hours + ":" + time.minutes}</span>
+            <span>{" " + time.amPm}</span>
+          </div>
         </div>
 
-        <div>
-          <button onClick={archiveCall}>{archUnarchButton}</button>
+        <div className="call-buttons">
+          <Link to={`/calls/${props.id}`}>
+            <div className="icon">
+              <img src={infoBtn} />
+            </div>
+          </Link>
+          <div className="icon" onClick={archiveCall}>
+            <img src={archBtn} />
+          </div>
         </div>
-      </div>
-        
       </div>
     </div>
   );

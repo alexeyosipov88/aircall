@@ -56,11 +56,13 @@ const ArchivedList = () => {
   const unarchiveAll = () => {
     setAllClicked(true);
   };
+  const archBtn = iconsObject.archive;
 
   return (
     <div className="all-calls">
-      <div>
-        <button onClick={unarchiveAll}>Unarchive all</button>
+      <div className="archive-all" onClick={unarchiveAll}>
+        <div className="icon"><img src={archBtn} alt="" /></div>
+        <div className="arch-all-text">Unarchive all calls</div>
       </div>
       <div>{allCalls}</div>
     </div>

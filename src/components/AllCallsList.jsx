@@ -4,38 +4,11 @@ import AllCallsListItem from "/home/alexey/lighthouse/aircall/src/components/All
 import checkForSameDate from "../helpers/check-same-date";
 import iconsObject from "../icons/icons-object";
 
-
 const AllCallsList = () => {
   const [calls, setCalls] = useState([]);
-  // listen for archive clicks on children
-  // const [archived, setArchived] = useState(false);
+
   const [allClicked, setAllClicked] = useState(false);
   const [updatePage, setUpdatePage] = useState(false);
-
-  // const checkForSameDate = (arr) => { 
-  //   let previousDateChecker;
-  //   arr.forEach((elem, index) => {
-  //     const timestamp = new Date(elem.created_at);
-  //     const year = timestamp.getFullYear();
-  //     const month = timestamp.getMonth();
-  //     const day = timestamp.getDay();
-  //     const dateChecker = year + month + day;
-  //     if(index === 0) {
-  //       previousDateChecker = dateChecker;
-  //       elem.sameDate = false;
-  //     } else {
-  //       if(dateChecker === previousDateChecker) {
-  //         elem.sameDate = true;
-  //       } else {
-  //         previousDateChecker = dateChecker;
-  //         elem.sameDate = false;
-  //       }
-  //     }
-  //   });
-
-
-  // }
-
 
   useEffect(() => {
     const getAllCalls = () => {
@@ -45,27 +18,6 @@ const AllCallsList = () => {
           let notArchived = result.data.filter((elem) => !elem.is_archived);
           // let previousDateChecker;
           checkForSameDate(notArchived);
-
-          // notArchived.forEach((elem, index) => {
-          //   const timestamp = new Date(elem.created_at);
-          //   const year = timestamp.getFullYear();
-          //   const month = timestamp.getMonth();
-          //   const day = timestamp.getDay();
-          //   const dateChecker = year + month + day;
-
-          //   if(index === 0) {
-          //     previousDateChecker = dateChecker;
-          //     elem.sameDate = false;
-          //   } else {
-          //     if(dateChecker === previousDateChecker) {
-          //       elem.sameDate = true;
-          //     } else {
-          //       previousDateChecker = dateChecker;
-          //       elem.sameDate = false;
-          //     }
-          //   }
-
-          // });
 
           setCalls(notArchived);
         });
@@ -98,7 +50,6 @@ const AllCallsList = () => {
     }
 
     return () => {
-      // setArchived(false);
       setAllClicked(false);
       setUpdatePage(false);
     };
@@ -106,6 +57,7 @@ const AllCallsList = () => {
 
   // sort calls by timestamp
 
+  const archBtn = iconsObject.archive;
   calls.sort((a, b) => a.created - b.created);
 
   const allCalls = calls.map((elem) => {
@@ -133,8 +85,9 @@ const AllCallsList = () => {
 
   return (
     <div className="all-calls">
-      <div>
-        <button onClick={archiveAll}>Archive all calls</button>
+      <div className="archive-all" onClick={archiveAll}>
+        <div className="icon"><img src={archBtn} alt="" /></div>
+        <div className="arch-all-text">Archive all calls</div>
       </div>
       <div>{allCalls}</div>
     </div>
